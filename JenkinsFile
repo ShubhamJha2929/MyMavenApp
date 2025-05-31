@@ -5,9 +5,8 @@ pipeline {
         maven 'Maven'  // Ensure 'Maven' is correctly configured in Jenkins Global Tool Configuration
     }
 
-    environment {
-        JAR_NAME = 'HelloMaven-1.0-SNAPSHOT.jar'
-    }
+    
+    
 
     stages {
         stage('Checkout') {
@@ -34,7 +33,7 @@ pipeline {
         stage('Run Application') {
             steps {
                 // Run the built JAR file
-                sh "java -jar target/${JAR_NAME}"
+                sh "java -jar target/HelloMaven-1.0-SNAPSHOT.jar"
             }
         }
     }
@@ -44,7 +43,7 @@ pipeline {
             echo "Pipeline completed successfully!"
         }
         failure {
-            echo "failed pipeline."
+            echo "pipeline failed."
         }
     }
 }
