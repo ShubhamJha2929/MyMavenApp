@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'Maven'  // Ensure 'Maven' is correctly configured in Jenkins Global Tool Configuration
+    }
+
+    
+    
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the Git repository
+                git branch: 'master', url: 'https://github.com/ShubhamJha2929/MyMavenApp.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Clean and build the project
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Run tests
+                sh 'mvn test'
+            }
+        }
+
+        stage('Run Application') {
+            steps {
+                // Run the built JAR file
+                sh "java -jar target/HelloMaven-1.0-SNAPSHOT.jar"
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Pipeline completed successfully!"
+        }
+        failure {
+            echo "pipeline fail."
+        }
+    }
+}
+
