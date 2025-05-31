@@ -4,8 +4,8 @@ stages {
 stage('Checkout') { 
 steps { 
 // Check out code from Git repository 
-git url: 'https://github.com/yourusername/your-maven- 
-project.git', branch: 'main' 
+git url: 'https://github.com/ShubhamJha2929/MyMavenApp.git'
+project.git', branch: 'master' 
 }
 } 
 stage('Build') { 
