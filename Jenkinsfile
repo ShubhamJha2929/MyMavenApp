@@ -1,4 +1,4 @@
-pipeline { 
+pipee { 
 agent any 
 stages { 
 stage('Checkout') { 
